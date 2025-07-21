@@ -742,79 +742,6 @@
   body {
     font-size: 15px;
   }
-
-  .exam-body {
-    flex-direction: column;
-  }
-
-  .question-sidebar, .question-panel {
-    width: 100%;
-  }
-
-  .question-sidebar {
-    border-right: none;
-    border-bottom: 1px solid var(--medium-gray);
-    height: auto;
-    max-height: 250px;
-  }
-
-  .question-palette {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .welcome-box {
-    padding: 25px 15px;
-  }
-
-  .menu-cards {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .question-actions {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .action-btn {
-    flex: 1;
-    min-width: 100px;
-  }
-
-  .header-controls {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
-  }
-
-  .exam-title {
-    font-size: 16px;
-  }
-
-  .score-details {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .score-box {
-    width: 100%;
-  }
-
-  .form-input,
-  .start-btn {
-    font-size: 15px;
-    padding: 10px;
-  }
-
-  .menu-card h3 {
-    font-size: 18px;
-  }
-
-  .welcome-title {
-    font-size: 20px;
-  }
-}
-
-
             .question-sidebar, .question-panel {
                 width: 100%;
             }
@@ -872,6 +799,10 @@
             .question-palette {
                 grid-template-columns: repeat(3, 1fr);
             }
+            body {
+  min-width: 1200px;
+  overflow-x: auto;
+}
 
             .exam-header {
                 flex-direction: column;
@@ -907,7 +838,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body> 
+    
     <!-- Welcome Page -->
     <div class="welcome-container" id="welcomePage">
         <div class="welcome-box">
