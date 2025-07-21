@@ -1,0 +1,2328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Education - Classes 5 to 10</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            padding-top: 70px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(146deg, #2c3e50, #3498db);
+            color: white;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            width: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 10s linear infinite;
+            font-weight: bold;
+            font-size: 2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .contact-btn {
+            background-color: var(--accent-color);
+            padding: 0.3rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto;
+        }
+
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .class-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .class-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .lessons-container {
+            display: none;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .lesson-list {
+            list-style: none;
+        }
+
+        .lesson-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lesson-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .lesson-item i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .lesson-content {
+            display: none;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .back-btn {
+            margin-bottom: 1rem;
+        }
+
+        .content-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn.active {
+            border-bottom: 3px solid var(--primary-color);
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .quiz-container {
+            display: none;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .question {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .options {
+            margin-left: 1rem;
+        }
+
+        .option {
+            margin-bottom: 0.5rem;
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        #hero {
+            margin-top: 60px;
+            min-height: calc(80vh - 60px);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        #cta {
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .programming-hub-section {
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .programming-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .programming-card {
+            width: 280px;
+            height: 220px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .programming-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .programming-card .btn {
+            margin-top: auto;
+            align-self: center;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+        }
+
+        .typing-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .typing-header {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .typing-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .typing-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .typing-header p {
+            opacity: 0.9;
+        }
+
+        .settings-card {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .settings-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .language-card {
+            flex: 1;
+            min-width: 120px;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-card i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .language-card.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .language-card.active i {
+            color: white;
+        }
+
+        .duration-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .duration-card {
+            padding: 0.8rem;
+            text-align: center;
+            border-radius: 6px;
+            border: 1px solid var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .duration-card.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .difficulty-cards {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .difficulty-card {
+            flex: 1;
+            min-width: 100px;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .difficulty-card i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .difficulty-card.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .typing-area {
+            padding: 1.5rem;
+        }
+
+        .timer-display {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .text-display {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            min-height: 150px;
+            border: 1px solid #ddd;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: none;
+            margin-bottom: 1rem;
+            min-height: 120px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .result-container {
+            display: none;
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .result-container h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 2px;
+            border-radius: 2px;
+        }
+
+        .correct {
+            color: #4CAF50;
+        }
+
+        .incorrect {
+            color: #F44336;
+            text-decoration: underline;
+        }
+
+        .current {
+            background: #e3f2fd;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .result-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .excellent {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #4caf50;
+        }
+        
+        .good {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border: 2px solid #2196f3;
+        }
+        
+        .average {
+            background-color: #fff8e1;
+            color: #ff8f00;
+            border: 2px solid #ffc107;
+        }
+        
+        .poor {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 2px solid #f44336;
+        }
+
+        #iti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            overflow-y: auto;
+            padding-top: 70px;
+        }
+
+        #iti-content .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 700px;
+            text-align: left;
+        }
+
+        .card h3 {
+            color: #007BFF;
+        }
+
+        .card p {
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* AI Chatbot Styles */
+        #ai-chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 380px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        #chat-messages {
+            height: 350px;
+            overflow-y: auto;
+            padding: 15px;
+            background: #fafafa;
+        }
+
+        #chat-trigger {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(106,17,203,0.4);
+            cursor: pointer;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin-bottom: 0.5rem;
+            }
+            
+            .class-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+
+            .language-selector, .difficulty-cards {
+                flex-direction: column;
+            }
+            
+            .duration-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .result-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            #ai-chatbot {
+                width: 90%;
+                right: 5%;
+                bottom: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .programming-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="logo-text">
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        @ Mr. ComPotter
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero"><i class="fas fa-home"></i> HOME</a></li>
+                <li><a href="#classes"><i class="fas fa-book"></i> CLASSES</a></li>
+                <li><a href="#contact" class="contact-btn"><i class="fas fa-envelope"></i> CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Computer Education - Preparing for the Future</h1>
+            <p>Comprehensive computer education resources for students from Class 5 to 10</p>
+            <div class="hero-btns">
+                <a href="#classes" class="btn btn-primary btn-large">Get Started Now <i class="fas fa-arrow-right"></i></a>
+                <a href="#features" class="btn btn-secondary btn-large">Explore Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programming Hub Section -->
+    <div class="programming-hub-section">
+        <h2><i class="fas fa-laptop-code"></i> Programming Hub</h2>
+        
+        <div class="programming-cards">
+            <!-- HTML Feature Card -->
+            <div class="programming-card" onclick="openProgrammingSection('html-section')">
+                <div class="card-icon" style="background-color: #E44D26;">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <h3>HTML</h3>
+                <p>Learn structure Webpage</p>
+                <button class="btn">Open</button>
+            </div>
+            
+            <!-- CSS Feature Card -->
+            <div class="programming-card" onclick="openProgrammingSection('css-section')">
+                <div class="card-icon" style="background-color: #2965F1;">
+                    <i class="fab fa-css3-alt"></i>
+                </div>
+                <h3>CSS</h3>
+                <p>Learn stylish Webpage</p>
+                <button class="btn">Open</button>
+            </div>
+            
+            <!-- JavaScript Feature Card -->
+            <div class="programming-card" onclick="openProgrammingSection('js-section')">
+                <div class="card-icon" style="background-color: #F0DB4F;">
+                    <i class="fab fa-js"></i>
+                </div>
+                <h3>JavaScript</h3>
+                <p>Learn Interactive Webpage</p>
+                <button class="btn">Open</button>
+            </div>
+            
+            <!-- Code Editor Card -->
+            <a href="editor.html" style="text-decoration: none; color: inherit;">
+                <div class="programming-card">
+                    <div class="card-icon" style="background-color: #4CAF50;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Code Editor</h3>
+                    <p>HTML/CSS/JS</p>
+                    <div class="btn">Open</div>
+                </div>
+            </a>
+            
+            <!-- Typing Master Card -->
+            <div class="programming-card" onclick="showTypingMaster()">
+                <div class="card-icon" style="background-color: #9c27b0;">
+                    <i class="fas fa-keyboard"></i>
+                </div>
+                <h3>Typing Skill Test</h3>
+                <p>Learn हिंदी/English Typing</p>
+                <div class="btn">Open</div>
+            </div>
+            
+            <!-- ITI COPA Card -->
+            <a href="iti.html" style="text-decoration: none; color: inherit;">
+                <div class="programming-card">
+                    <div class="card-icon" style="background-color: #9b59b6;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 style="text-align:center;">ITI COPA</h3>
+                    <p style="text-align:center;">Computer Operator & Programming Assistant</p>
+                    <div class="btn">Open</div>
+                </div>
+            </a>
+            
+            <!-- ITI COPA Mock Test Card -->
+            <div class="programming-card" onclick="window.location.href='mock.html'">
+                <div class="card-icon" style="background-color: #3f51b5;">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <h3>ITI COPA Mock Test</h3>
+                <p>Practice CBT for ITI COPA students</p>
+                <div class="btn">Open</div>
+            </div>
+
+            <!-- CITS Mock Test Card -->
+            <div class="programming-card" onclick="window.location.href='cits-mock.html'">
+                <div class="card-icon" style="background-color: #673ab7;">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>CITS Mock Test</h3>
+                <p>Practice tests for CITS certification</p>
+                <div class="btn">Open</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <h2 class="section-title">Our Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Comprehensive Curriculum</h3>
+                <p>Complete computer syllabus for classes 5 to 10 following CBSE pattern</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <h3>PDF Notes</h3>
+                <p>Detailed and easy-to-understand PDF notes for all chapters</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h3>Interactive Quizzes</h3>
+                <p>Chapter-wise quizzes to test your understanding</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="cta" class="section">
+        <div class="cta-content">
+            <h2>Start Your Computer Education Journey Today</h2>
+            <p>Register now to access our free learning resources</p>
+            <a href="#classes" class="btn btn-large">Get Free Access <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="classes" class="section">
+            <h2 class="section-title">Choose Your Classes</h2>
+            <div class="class-grid">
+                <div class="class-card" data-class="5">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Class 5</h3>
+                </div>
+                <div class="class-card" data-class="6">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Class 6</h3>
+                </div>
+                <div class="class-card" data-class="7">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Class 7</h3>
+                </div>
+                <div class="class-card" data-class="8">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Class 8</h3>
+                </div>
+                <div class="class-card" data-class="9">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Class 9</h3>
+                </div>
+                <div class="class-card" data-class="10">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Class 10</h3>
+                </div>
+            </div>
+
+            <div id="lessonsContainer" class="lessons-container">
+                <h3 id="selectedClassTitle"></h3>
+                <ul class="lesson-list" id="lessonList">
+                    <!-- Lessons will be added here by JavaScript -->
+                </ul>
+            </div>
+
+            <div id="lessonContent" class="lesson-content">
+                <button class="btn back-btn" id="backToLessons"><i class="fas fa-arrow-left"></i> Back to Lessons</button>
+                <h3 id="lessonTitle"></h3>
+                
+                <div class="content-tabs">
+                    <button class="tab-btn active" data-tab="article">Article</button>
+                    <button class="tab-btn" data-tab="notes">Notes</button>
+                    <button class="tab-btn" data-tab="pdf">PDF</button>
+                    <button class="tab-btn" data-tab="quiz">Quiz</button>
+                </div>
+                
+                <div class="tab-content active" id="article">
+                    <!-- Article content will be added here -->
+                </div>
+                
+                <div class="tab-content" id="notes">
+                    <!-- Notes content will be added here -->
+                </div>
+                
+                <div class="tab-content" id="pdf">
+                    <!-- PDF content will be added here -->
+                </div>
+                
+                <div class="tab-content" id="quiz">
+                    <div id="quizQuestions">
+                        <!-- Quiz questions will be added here -->
+                    </div>
+                    <button id="submitQuiz" class="btn">Submit Quiz</button>
+                    <div id="quizResult" class="quiz-result">
+                        <!-- Quiz result will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ITI Container (hidden by default) -->
+    <div id="iti-container" style="display:none;">
+        <button onclick="hideITI()" class="btn" style="position:fixed;top:80px;right:20px;z-index:1001;">
+            <i class="fas fa-arrow-left"></i> Back to Main
+        </button>
+        <div id="iti-content"></div>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>@ Mr.Computer Potter is a dedicated digital learning platform for students in Grades 5 to 10, specializing in Computer Science education. Our mission is to make technology learning simple, engaging, and effective.</p>
+                    <h4>What We Offer</h4>
+                    <ul>
+                        <li>✅ Easy-to-Understand Notes</li>
+                        <li>✅ Downloadable PDFs</li>
+                        <li>✅ Interactive Quizzes</li>
+                        <li>✅ Daily/Weekly Mock Tests</li>
+                        <li>✅ Coding & Practical Guides</li>
+                    </ul>
+                    <h4>Our Vision</h4>
+                    <p>We believe in "making learning fun and accessible." Our goal is to empower students with digital literacy, problem-solving skills, and confidence in computer science.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> ayushpotterpotter@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9721444304</p>
+                    <h3>Follow Us</h3>
+                    <p>
+                        <a href="#" style="color: white;"><i class="fab fa-facebook"></i> Facebook</a><br>
+                        <a href="#" style="color: white;"><i class="fab fa-youtube"></i> YouTube</a><br>
+                        <a href="#" style="color: white;"><i class="fab fa-telegram"></i> Telegram</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Computer Education. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Typing Master Modal (hidden by default) -->
+    <div id="typingMasterModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:1000;overflow:auto;">
+        <button onclick="hideTypingMaster()" style="position:fixed;top:10px;left:10px;z-index:1001;padding:8px 15px;background:#f44336;color:white;border:none;border-radius:4px;cursor:pointer;">
+            <i class="fas fa-arrow-left"></i> वापस जाएं
+        </button>
+        <div id="typingMasterContent" style="padding:20px;">
+            <!-- Typing Master content will be loaded here -->
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div id="ai-chatbot">
+        <div style="background:linear-gradient(135deg,#6a11cb,#2575fc);color:white;padding:12px;border-radius:12px 12px 0 0;display:flex;justify-content:space-between;align-items:center;">
+            <h3 style="margin:0;font-size:18px;">🤖 Mr. ComPotter AI</h3>
+            <button onclick="toggleChat()" style="background:none;border:none;color:white;font-size:20px;cursor:pointer;">×</button>
+        </div>
+        <div id="chat-messages"></div>
+        <div style="display:flex;border-top:1px solid #eee;background:#fff;border-radius:0 0 12px 12px;">
+            <input id="user-input" type="text" placeholder="मैसेज टाइप करें..." style="flex:1;padding:12px 15px;border:none;outline:none;border-radius:0 0 0 12px;font-size:14px;">
+            <button onclick="sendMessage()" style="background:linear-gradient(135deg,#6a11cb,#2575fc);color:white;border:none;padding:0 20px;cursor:pointer;font-size:14px;border-radius:0 0 12px 0;">भेजें</button>
+        </div>
+    </div>
+
+    <button id="chat-trigger" onclick="toggleChat()">
+        <span id="chat-icon">💬</span>
+    </button>
+
+    <script>
+        // Syllabus data for classes 5-10
+        const syllabusData = {
+            5: [
+                {
+                    title: "Introduction to Computers",
+                    article: "<h4>What is a Computer?</h4><p>A computer is an electronic device that accepts data as input, processes it, and provides results as output.</p><h4>Parts of Computer</h4><ul><li>Monitor</li><li>CPU</li><li>Keyboard</li><li>Mouse</li></ul>",
+                    notes: "<p>Understanding basic computer components is essential.</p><p>Computers play a vital role in our daily lives.</p>",
+                    pdf: "<p><a href='#' class='btn'><i class='fas fa-file-pdf'></i> Download Introduction to Computers PDF</a></p>",
+                    quiz: [
+                        {
+                            question: "What is a computer?",
+                            options: ["A toy", "An electronic device", "A book", "An animal"],
+                            answer: 1
+                        },
+                        {
+                            question: "Which part shows the display?",
+                            options: ["CPU", "Monitor", "Keyboard", "Mouse"],
+                            answer: 1
+                        }
+                    ]
+                },
+                {
+                    title: "Using MS Paint",
+                    article: "<h4>What is MS Paint?</h4><p>MS Paint is a simple graphics program where you can create drawings.</p><h4>Tools</h4><ul><li>Pencil</li><li>Brush</li><li>Shapes</li><li>Fill Color</li></ul>",
+                    notes: "<p>MS Paint is a good beginner program for children.</p><p>It helps enhance creativity.</p>",
+                    pdf: "<p><a href='#' class='btn'><i class='fas fa-file-pdf'></i> Download MS Paint Guide PDF</a></p>",
+                    quiz: [
+                        {
+                            question: "What can you create in MS Paint?",
+                            options: ["Songs", "Drawings", "Food", "Clothes"],
+                            answer: 1
+                        },
+                        {
+                            question: "Which tool is used to draw lines?",
+                            options: ["Pencil", "Brush", "Shapes", "Eraser"],
+                            answer: 0
+                        }
+                    ]
+                }
+            ],
+            6: [
+                {
+                    title: "Computer Basics",
+                    article: "<h4>Computer Fundamentals</h4><p>Understanding basic computer concepts is essential.</p>",
+                    notes: "<p>Learn about input and output devices.</p>",
+                    pdf: "<p><a href='#' class='btn'><i class='fas fa-file-pdf'></i> Download Computer Basics PDF</a></p>",
+                    quiz: [
+                        {
+                            question: "What is a keyboard?",
+                            options: ["Input device", "Output device", "Processing device", "None of these"],
+                            answer: 0
+                        }
+                    ]
+                }
+            ],
+            7: [
+                {
+                    title: "Computer History - महत्वपूर्ण तथ्य और संक्षिप्त नोट्स",
+                    article: `<h4>महत्वपूर्ण तथ्य:</h4>
+                    <ol>
+                        <li><strong>पहला मैकेनिकल कंप्यूटर</strong> - 1822 में, <strong>चार्ल्स बैबेज</strong> ने "डिफरेंस इंजन" का आविष्कार किया, जिसे पहला मैकेनिकल कंप्यूटर माना जाता है।</li>
+                        <li><strong>पहला प्रोग्रामर</strong> - <strong>एडा लॉवलेस</strong> को पहला कंप्यूटर प्रोग्रामर माना जाता है। उन्होंने बैबेज के एनालिटिकल इंजन के लिए एल्गोरिदम लिखा था।</li>
+                        <li><strong>पहला इलेक्ट्रॉनिक कंप्यूटर</strong> - 1943-1945 में <strong>ENIAC (Electronic Numerical Integrator and Computer)</strong> विकसित किया गया था।</li>
+                        <li><strong>पहला स्टोर्ड प्रोग्राम कंप्यूटर</strong> - 1949 में <strong>EDSAC (Electronic Delay Storage Automatic Calculator)</strong> पहला कंप्यूटर था जो स्टोर्ड प्रोग्राम की अवधारणा पर आधारित था।</li>
+                        <li><strong>पहला कमर्शियल कंप्यूटर</strong> - 1951 में <strong>UNIVAC I (Universal Automatic Computer I)</strong> पहला व्यावसायिक रूप से उपलब्ध कंप्यूटर था।</li>
+                        <li><strong>पहला माइक्रोप्रोसेसर</strong> - 1971 में <strong>Intel 4004</strong> पहला माइक्रोप्रोसेसर था, जिसने पर्सनल कंप्यूटर क्रांति की नींव रखी।</li>
+                        <li><strong>पहला पर्सनल कंप्यूटर (PC)</strong> - 1975 में <strong>Altair 8800</strong> पहला लोकप्रिय पर्सनल कंप्यूटर था।</li>
+                        <li><strong>IBM PC</strong> - 1981 में IBM ने अपना पहला पर्सनल कंप्यूटर <strong>IBM PC 5150</strong> लॉन्च किया, जिसने कंप्यूटर उद्योग को बदल दिया।</li>
+                        <li><strong>पहला GUI आधारित कंप्यूटर</strong> - 1984 में <strong>Apple Macintosh</strong> पहला उपभोक्ता कंप्यूटर था जिसमें ग्राफिकल यूजर इंटरफेस (GUI) और माउस का उपयोग किया गया।</li>
+                        <li><strong>इंटरनेट का विकास</strong> - 1969 में <strong>ARPANET</strong> के रूप में शुरू हुआ, जो बाद में इंटरनेट का आधार बना।</li>
+                    </ol>`,
+                    notes: `<h4>संक्षिप्त नोट्स (Point-to-Point):</h4>
+                    <ul>
+                        <li>✅ <strong>पहला कंप्यूटर</strong> - चार्ल्स बैबेज का "डिफरेंस इंजन" (1822)</li>
+                        <li>✅ <strong>पहला प्रोग्रामर</strong> - एडा लॉवलेस (1830s)</li>
+                        <li>✅ <strong>पहला इलेक्ट्रॉनिक कंप्यूटर</strong> - ENIAC (1943-1945)</li>
+                        <li>✅ <strong>पहला स्टोर्ड प्रोग्राम कंप्यूटर</strong> - EDSAC (1949)</li>
+                        <li>✅ <strong>पहला व्यावसायिक कंप्यूटर</strong> - UNIVAC I (1951)</li>
+                        <li>✅ <strong>पहला माइक्रोप्रोसेसर</strong> - Intel 4004 (1971)</li>
+                        <li>✅ <strong>पहला पर्सनल कंप्यूटर</strong> - Altair 8800 (1975)</li>
+                        <li>✅ <strong>IBM का पहला PC</strong> - IBM PC 5150 (1981)</li>
+                        <li>✅ <strong>पहला GUI आधारित कंप्यूटर</strong> - Apple Macintosh (1984)</li>
+                        <li>✅ <strong>इंटरनेट की शुरुआत</strong> - ARPANET (1969)</li>
+                    </ul>
+                    <p>यह संक्षिप्त और महत्वपूर्ण नोट्स कंप्यूटर के इतिहास को जल्दी समझने के लिए उपयोगी हैं। 😊</p>`,
+                    pdf: "<p><a href='#' class='btn'><i class='fas fa-file-pdf'></i> कंप्यूटर इतिहास PDF डाउनलोड करें</a></p>",
+                    quiz: [
+                        {
+                            question: "पहला मैकेनिकल कंप्यूटर किसने बनाया था?",
+                            options: ["एडा लॉवलेस", "चार्ल्स बैबेज", "बिल गेट्स", "स्टीव जॉब्स"],
+                            answer: 1
+                        },
+                        {
+                            question: "पहला इलेक्ट्रॉनिक कंप्यूटर कौन सा था?",
+                            options: ["UNIVAC", "ENIAC", "EDSAC", "Altair"],
+                            answer: 1
+                        },
+                        {
+                            question: "Intel 4004 माइक्रोप्रोसेसर किस वर्ष लॉन्च हुआ?",
+                            options: ["1969", "1971", "1975", "1981"],
+                            answer: 1
+                        },
+                        {
+                            question: "GUI वाला पहला कंप्यूटर कौन सा था?",
+                            options: ["IBM PC", "Altair 8800", "Apple Macintosh", "UNIVAC"],
+                            answer: 2
+                        }
+                    ]
+                }
+            ],
+            8: [
+                {
+                    title: "Python Programming",
+                    article: "<h4>What is Python?</h4><p>Python is a popular programming language.</p>",
+                    notes: "<p>Learn Python syntax.</p>",
+                    pdf: "<p><a href='#' class='btn'><i class='fas fa-file-pdf'></i> Download Python Guide PDF</a></p>",
+                    quiz: [
+                        {
+                            question: "What type of language is Python?",
+                            options: ["Compiled", "Interpreted", "Markup", "None of these"],
+                            answer: 1
+                        }
+                    ]
+                }
+            ],
+            9: [
+                {
+                    title: "Database Management",
+                    article: "<h4>What is a Database?</h4><p>A database is a system to store and manage data.</p>",
+                    notes: "<p>Learn SQL queries.</p>",
+                    pdf: "<p><a href='#' class='btn'><i class='fas fa-file-pdf'></i> Download Database Guide PDF</a></p>",
+                    quiz: [
+                        {
+                            question: "What does SQL stand for?",
+                            options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "None of these"],
+                            answer: 0
+                        }
+                    ]
+                }
+            ],
+            10: [
+                {
+                    title: "Cyber Security",
+                    article: "<h4>What is Cyber Security?</h4><p>Ways to stay safe on the internet.</p>",
+                    notes: "<p>Password management and phishing prevention.</p>",
+                    pdf: "<p><a href='#' class='btn'><i class='fas fa-file-pdf'></i> Download Cyber Security Guide PDF</a></p>",
+                    quiz: [
+                        {
+                            question: "Which type of password is most secure?",
+                            options: ["123456", "password", "Birthdate", "Complex password with letters, numbers and symbols"],
+                            answer: 3
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // DOM Elements
+        const classCards = document.querySelectorAll('.class-card');
+        const lessonsContainer = document.getElementById('lessonsContainer');
+        const lessonList = document.getElementById('lessonList');
+        const selectedClassTitle = document.getElementById('selectedClassTitle');
+        const lessonContent = document.getElementById('lessonContent');
+        const lessonTitle = document.getElementById('lessonTitle');
+        const backToLessons = document.getElementById('backToLessons');
+        const articleContent = document.getElementById('article');
+        const notesContent = document.getElementById('notes');
+        const pdfContent = document.getElementById('pdf');
+        const quizContent = document.getElementById('quiz');
+        const quizQuestions = document.getElementById('quizQuestions');
+        const submitQuiz = document.getElementById('submitQuiz');
+        const quizResult = document.getElementById('quizResult');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+
+        // Variables to track current state
+        let currentClass = null;
+        let currentLesson = null;
+
+        // Event Listeners
+        classCards.forEach(card => {
+            card.addEventListener('click', () => {
+                currentClass = card.getAttribute('data-class');
+                showLessons(currentClass);
+            });
+        });
+
+        backToLessons.addEventListener('click', () => {
+            lessonContent.style.display = 'none';
+            lessonsContainer.style.display = 'block';
+        });
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected tab content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        submitQuiz.addEventListener('click', showQuizResult);
+
+        // Functions
+        function showLessons(classNumber) {
+            const classData = syllabusData[classNumber];
+            
+            // Update UI
+            selectedClassTitle.textContent = `Class ${classNumber} - Lessons`;
+            lessonList.innerHTML = '';
+            
+            // Add lessons to list
+            classData.forEach((lesson, index) => {
+                const li = document.createElement('li');
+                li.className = 'lesson-item';
+                li.innerHTML = `<i class="fas fa-book"></i> ${lesson.title}`;
+                li.addEventListener('click', () => {
+                    showLessonContent(classNumber, index);
+                });
+                lessonList.appendChild(li);
+            });
+            
+            // Show lessons container
+            lessonsContainer.style.display = 'block';
+            lessonContent.style.display = 'none';
+        }
+
+        function showLessonContent(classNumber, lessonIndex) {
+            const lesson = syllabusData[classNumber][lessonIndex];
+            currentLesson = lessonIndex;
+            
+            // Update UI
+            lessonTitle.textContent = lesson.title;
+            articleContent.innerHTML = lesson.article;
+            notesContent.innerHTML = lesson.notes;
+            pdfContent.innerHTML = lesson.pdf;
+            
+            // Build quiz
+            quizQuestions.innerHTML = '';
+            lesson.quiz.forEach((question, qIndex) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <h4>${qIndex + 1}. ${question.question}</h4>
+                    <div class="options">
+                        ${question.options.map((option, oIndex) => `
+                            <div class="option">
+                                <input type="radio" name="q${qIndex}" id="q${qIndex}o${oIndex}" value="${oIndex}">
+                                <label for="q${qIndex}o${oIndex}">${option}</label>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizQuestions.appendChild(questionDiv);
+            });
+            
+            // Hide quiz result
+            quizResult.style.display = 'none';
+            
+            // Show lesson content
+            lessonsContainer.style.display = 'none';
+            lessonContent.style.display = 'block';
+        }
+
+        function showQuizResult() {
+            const classNumber = currentClass;
+            const lessonIndex = currentLesson;
+            const quiz = syllabusData[classNumber][lessonIndex].quiz;
+            
+            let score = 0;
+            let totalQuestions = quiz.length;
+            
+            // Check answers and update UI
+            quiz.forEach((question, qIndex) => {
+                const selectedOption = document.querySelector(`input[name="q${qIndex}"]:checked`);
+                const optionsContainer = document.querySelector(`input[name="q${qIndex}"]`).parentNode.parentNode;
+                
+                // Highlight all options
+                const optionElements = optionsContainer.querySelectorAll('input[type="radio"]');
+                optionElements.forEach((option, oIndex) => {
+                    const label = option.nextElementSibling;
+                    if (oIndex === question.answer) {
+                        // Correct answer (always green)
+                        label.style.color = '#4CAF50';
+                        label.style.fontWeight = 'bold';
+                    } else if (selectedOption && parseInt(selectedOption.value) === oIndex && oIndex !== question.answer) {
+                        // Selected but wrong answer (red)
+                        label.style.color = '#F44336';
+                        label.style.fontWeight = 'bold';
+                    } else {
+                        // Other options (reset)
+                        label.style.color = '';
+                        label.style.fontWeight = '';
+                    }
+                });
+                
+                // Count correct answers
+                if (selectedOption && parseInt(selectedOption.value) === question.answer) {
+                    score++;
+                }
+            });
+            
+            // Calculate percentage
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            // Determine greeting based on percentage
+            let greeting = "";
+            let greetingClass = "";
+            if (percentage >= 80) {
+                greeting = "Excellent! You've mastered this topic! 🎉";
+                greetingClass = "excellent";
+            } else if (percentage >= 60) {
+                greeting = "Good job! You're on the right track! 👍";
+                greetingClass = "good";
+            } else if (percentage >= 40) {
+                greeting = "Not bad! With more practice you can do better! 💪";
+                greetingClass = "average";
+            } else {
+                greeting = "Keep trying! Review the lesson and try again! 📚";
+                greetingClass = "poor";
+            }
+            
+            // Show result in a card format
+            quizResult.innerHTML = `
+                <div class="result-card" style="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <h3 style="margin-top: 0; color: var(--secondary-color);">Quiz Result</h3>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">${score}/${totalQuestions}</div>
+                            <div style="font-size: 0.9rem; color: #666;">Correct Answers</div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">${percentage}%</div>
+                            <div style="font-size: 0.9rem; color: #666;">Score</div>
+                        </div>
+                    </div>
+                    
+                    <div class="${greetingClass}" style="padding: 10px; border-radius: 5px; text-align: center; font-weight: bold; margin-top: 10px;">
+                        ${greeting}
+                    </div>
+                    
+                    <button onclick="location.reload()" class="btn" style="margin-top: 15px; width: 100%;">
+                        <i class="fas fa-redo"></i> Try Again
+                    </button>
+                </div>
+            `;
+            
+            quizResult.style.display = 'block';
+            quizResult.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Programming Hub Functions
+        function openProgrammingSection(section) {
+            console.log("Opening section: " + section);
+            alert(`Opening ${section} - This feature will be implemented soon!`);
+        }
+
+        function showTypingMaster() {
+            document.getElementById('typingMasterModal').style.display = 'block';
+            document.getElementById('typingMasterContent').innerHTML = `
+                <div class="typing-container">
+                    <div class="typing-header">
+                        <h1>@SMr. ComPotter</h1>
+                        <h2><i class="fas fa-keyboard"></i> Typing Master</h2>
+                        <p>Practice Hindi and English typing to improve your speed and accuracy</p>
+                    </div>
+
+                    <!-- Language Selection Card -->
+                    <div class="settings-card">
+                        <h3><i class="fas fa-language"></i> Select Language</h3>
+                        <div class="language-selector">
+                            <div class="language-card active" id="englishBtn">
+                                <i class="fas fa-globe"></i>
+                                <span>English</span>
+                            </div>
+                            <div class="language-card" id="hindiBtn">
+                                <i class="fas fa-language"></i>
+                                <span>हिंदी (Hindi)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Test Duration Card -->
+                    <div class="settings-card">
+                        <h3><i class="fas fa-clock"></i> Test Duration</h3>
+                        <div class="duration-cards">
+                            <div class="duration-card" data-seconds="30">30 Sec</div>
+                            <div class="duration-card active" data-seconds="60">1 Min</div>
+                            <div class="duration-card" data-seconds="120">2 Min</div>
+                            <div class="duration-card" data-seconds="180">3 Min</div>
+                            <div class="duration-card" data-seconds="240">4 Min</div>
+                            <div class="duration-card" data-seconds="300">5 Min</div>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Level Card -->
+                    <div class="settings-card">
+                        <h3><i class="fas fa-sliders-h"></i> Difficulty Level</h3>
+                        <div class="difficulty-cards">
+                            <div class="difficulty-card active" data-difficulty="easy">
+                                <i class="fas fa-smile"></i>
+                                <span>Normal</span>
+                            </div>
+                            <div class="difficulty-card" data-difficulty="medium">
+                                <i class="fas fa-meh"></i>
+                                <span>Medium</span>
+                            </div>
+                            <div class="difficulty-card" data-difficulty="hard">
+                                <i class="fas fa-frown"></i>
+                                <span>Hard</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typing Area -->
+                    <div class="typing-area">
+                        <div class="timer-display" id="timer">01:00</div>
+
+                        <div class="text-display" id="textDisplay">
+                            <!-- Sample text will be inserted here by JavaScript -->
+                        </div>
+
+                        <textarea class="text-input" id="textInput" placeholder="Start typing here to begin the test..."></textarea>
+
+                        <div class="controls">
+                            <button class="btn" id="restartBtn"><i class="fas fa-redo"></i> Restart</button>
+                            <button class="btn" id="newTextBtn"><i class="fas fa-sync-alt"></i> New Text</button>
+                        </div>
+
+                        <div class="result-container" id="resultContainer">
+                            <h3>Your Typing Results</h3>
+                            <div class="result-stats">
+                                <div class="stat-box">
+                                    <div class="stat-value" id="wpm">0</div>
+                                    <div class="stat-label">Words Per Minute</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value" id="accuracy">0%</div>
+                                    <div class="stat-label">Accuracy</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value" id="errors">0</div>
+                                    <div class="stat-label">Errors</div>
+                                </div>
+                            </div>
+                            <div class="result-message" id="resultMessage">
+                                <!-- Dynamic message will appear here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Initialize Typing Master functionality
+            initTypingMaster();
+        }
+
+        function hideTypingMaster() {
+            document.getElementById('typingMasterModal').style.display = 'none';
+        }
+
+        function initTypingMaster() {
+            // DOM Elements
+            const englishBtn = document.getElementById('englishBtn');
+            const hindiBtn = document.getElementById('hindiBtn');
+            const timerOptions = document.querySelectorAll('.duration-card');
+            const difficultyOptions = document.querySelectorAll('.difficulty-card');
+            const timerDisplay = document.getElementById('timer');
+            const textDisplay = document.getElementById('textDisplay');
+            const textInput = document.getElementById('textInput');
+            const restartBtn = document.getElementById('restartBtn');
+            const newTextBtn = document.getElementById('newTextBtn');
+            const resultContainer = document.getElementById('resultContainer');
+            const wpmDisplay = document.getElementById('wpm');
+            const accuracyDisplay = document.getElementById('accuracy');
+            const errorsDisplay = document.getElementById('errors');
+            const resultMessage = document.getElementById('resultMessage');
+
+            // Sample Texts by Difficulty
+            const englishTexts = {
+                easy: [
+                    "Ram is a good boy.My name ayush potter.Bharat is a very intelligent boy.Maharashtra is big state of india. The quick brown fox jumps over the lazy dog. This sentence contains all the letters in the English alphabet.",
+                    "Hellow user i am very happy.You are very good person. We are learn English typing with improve our typing skill. Thanks dear user,What is your name and your school name.You are very lucky.quizzes are Jurassic park see zebra,yaak,Xperia. Practice makes perfect. Regular typing practice will help you improve your speed and accuracy.",
+                    "Computer education is important for students. Learning to type quickly will help you in your studies.",
+                    "The internet has changed how we communicate. Being able to type well is important for online communication.",
+                    "Programming requires good typing skills. Writing code will be easier if you can type quickly and accurately."
+                ],
+                medium: [
+                    "The ability to type without looking at the keyboard is called touch typing. This skill can significantly improve your productivity.",
+                    "Consistent practice is key to developing muscle memory for typing. Try to practice at least 15-20 minutes daily.",
+                    "Proper typing posture includes keeping your feet flat on the floor, your back straight, and your wrists elevated slightly above the keyboard.",
+                    "The home row keys are the foundation of touch typing. Your fingers should always return to ASDF for the left hand and JKL; for the right hand.",
+                    "Ergonomic keyboards are designed to minimize strain and reduce the risk of repetitive stress injuries like carpal tunnel syndrome."
+                ],
+                hard: [
+                    "The QWERTY keyboard layout was designed in the 1870s for mechanical typewriters to prevent jamming by separating commonly used letter pairs.",
+                    "According to research, the average typing speed is about 40 words per minute, while professional typists can reach 65-75 WPM with high accuracy.",
+                    "Dvorak and Colemak are alternative keyboard layouts designed for efficiency and comfort, though QWERTY remains dominant due to its widespread adoption.",
+                    "Stenotype machines allow court reporters to type at speeds exceeding 300 words per minute by pressing multiple keys simultaneously to represent syllables or words.",
+                    "The world record for typing speed on a QWERTY keyboard is 216 words per minute with 99.16% accuracy, achieved by Barbara Blackburn in 2005."
+                ]
+            };
+
+            const hindiTexts = {
+                easy: [
+                    "मेरा नाम राहुल है और मैं दिल्ली में रहता हूँ। हिंदी टाइपिंग सीखना आज के डिजिटल युग में बहुत महत्वपूर्ण है।",
+                    "कंप्यूटर शिक्षा आधुनिक युग की आवश्यकता है। सभी छात्रों को कंप्यूटर और इंटरनेट का ज्ञान होना चाहिए।",
+                    "हिंदी भारत की राष्ट्रभाषा है। हिंदी टाइपिंग के लिए आप रोमन लिपि या देवनागरी कीबोर्ड का उपयोग कर सकते हैं।",
+                    "प्रैक्टिस करने से टाइपिंग स्पीड बढ़ती है। रोजाना थोड़ा समय टाइपिंग प्रैक्टिस के लिए निकालें।",
+                    "टाइपिंग एक कला है जिसे कोई भी सीख सकता है। धैर्य और अभ्यास से आप एक अच्छे टाइपिस्ट बन सकते हैं।"
+                ],
+                medium: [
+                    "हिंदी टाइपिंग में देवनागरी लिपि का उपयोग करने के लिए इनस्क्रिप्ट कीबोर्ड लेआउट सबसे उपयुक्त है, जिसमें प्रत्येक हिंदी वर्ण कीबोर्ड पर उसके मूल स्थान पर उपलब्ध होता है।",
+                    "टच टाइपिंग तकनीक में आपको कीबोर्ड देखने की आवश्यकता नहीं होती है। इसके लिए आपको उंगलियों को होम रो (मूल पंक्ति) पर सही स्थान पर रखना सीखना होगा।",
+                    "हिंदी टाइपिंग की गति बढ़ाने के लिए आपको नियमित अभ्यास करना चाहिए। प्रतिदिन 15-20 मिनट का अभ्यास आपकी स्पीड और शुद्धता में सुधार ला सकता है।",
+                    "टाइपिंग करते समय आपकी मुद्रा (पोस्चर) सही होनी चाहिए। पीठ सीधी रखें, कलाइयों को थोड़ा ऊपर उठाएं, और पैरों को जमीन पर सपाट रखें।",
+                    "टाइपिंग सीखने के विभिन्न चरण होते हैं - पहले सटीकता पर ध्यान दें, फिर धीरे-धीरे गति बढ़ाएं। शुरुआत में गलतियों से घबराएं नहीं।"
+                ],
+                hard: [
+                    "हिंदी भाषा में टाइपिंग की दृष्टि से सबसे अधिक उपयोग होने वाले अक्षर हैं - अ, आ, क, त, न, म, स, र, ल, ज। इन अक्षरों पर विशेष ध्यान देकर आप अपनी टाइपिंग स्पीड को सुधार सकते हैं।",
+                    "इनस्क्रिप्ट कीबोर्ड लेआउट को भारत सरकार द्वारा 1986 में मानक के रूप में स्वीकार किया गया था। यह लेआउट हिंदी सहित सभी भारतीय भाषाओं के लिए वैज्ञानिक और संगत तरीके से डिज़ाइन किया गया है।",
+                    "पेशेवर टाइपिस्ट 50-60 शब्द प्रति मिनट की गति से हिंदी में टाइप कर सकते हैं। इस स्तर तक पहुँचने के लिए कम से कम 6 महीने का नियमित अभ्यास आवश्यक होता है।",
+                    "हिंदी टाइपिंग में गति और शुद्धता दोनों का संतुलन महत्वपूर्ण है। एक अच्छा टाइपिस्ट वही माना जाता है जो कम से कम गलतियों के साथ तेज गति से टाइप कर सके।",
+                    "हिंदी टाइपिंग प्रतियोगिताओं में प्रतिभागियों को जटिल गद्यांश, तकनीकी शब्दावली या कविताएँ टाइप करने को दी जाती हैं। इनमें सफल होने के लिए व्यापक शब्दावली ज्ञान और उच्च टाइपिंग कौशल आवश्यक है।"
+                ]
+            };
+
+            // Variables
+            let currentLanguage = 'english';
+            let currentDifficulty = 'easy';
+            let testDuration = 60;
+            let timer;
+            let timeLeft = testDuration;
+            let isTestRunning = false;
+            let startTime;
+            let endTime;
+            let originalText = '';
+            let typedText = '';
+            let errors = 0;
+
+            // Event Listeners
+            englishBtn.addEventListener('click', () => switchLanguage('english'));
+            hindiBtn.addEventListener('click', () => switchLanguage('hindi'));
+            
+            timerOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Update active button
+                    timerOptions.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update duration
+                    testDuration = parseInt(this.dataset.seconds);
+                    timeLeft = testDuration;
+                    updateTimerDisplay();
+                    
+                    // Reset if test was running
+                    if (isTestRunning) {
+                        resetTest();
+                    }
+                });
+            });
+            
+            difficultyOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Update active button
+                    difficultyOptions.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update difficulty
+                    currentDifficulty = this.dataset.difficulty;
+                    
+                    // Load new text
+                    loadNewText();
+                    
+                    // Reset if test was running
+                    if (isTestRunning) {
+                        resetTest();
+                    }
+                });
+            });
+
+            restartBtn.addEventListener('click', restartTest);
+            newTextBtn.addEventListener('click', newText);
+            textInput.addEventListener('input', handleTyping);
+            
+            // New event listener for key press to start timer
+            textInput.addEventListener('keydown', function(e) {
+                if (!isTestRunning && e.key.length === 1) {
+                    startTest();
+                }
+            });
+
+            // Functions
+            function switchLanguage(language) {
+                currentLanguage = language;
+                
+                // Update active button
+                englishBtn.classList.remove('active');
+                hindiBtn.classList.remove('active');
+                
+                if (language === 'english') {
+                    englishBtn.classList.add('active');
+                } else {
+                    hindiBtn.classList.add('active');
+                }
+                
+                // Load new text
+                loadNewText();
+                
+                // Reset if test was running
+                if (isTestRunning) {
+                    resetTest();
+                }
+            }
+
+            function loadNewText() {
+                const texts = currentLanguage === 'english' ? englishTexts[currentDifficulty] : hindiTexts[currentDifficulty];
+                originalText = texts[Math.floor(Math.random() * texts.length)];
+                
+                // Display text with highlighting
+                textDisplay.innerHTML = '';
+                originalText.split('').forEach(char => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    textDisplay.appendChild(span);
+                });
+                
+                // Highlight first character
+                textDisplay.children[0].classList.add('current');
+                
+                // Enable text input and focus
+                textInput.disabled = false;
+                textInput.value = '';
+                textInput.focus();
+            }
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            function startTest() {
+                if (isTestRunning) return;
+                
+                isTestRunning = true;
+                startTime = new Date();
+                errors = 0;
+                typedText = '';
+                timeLeft = testDuration;
+                updateTimerDisplay();
+                
+                // Start timer
+                timer = setInterval(updateTimer, 1000);
+                
+                // Hide results if showing
+                resultContainer.style.display = 'none';
+            }
+
+            function updateTimer() {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                // End test if time's up
+                if (timeLeft <= 0) {
+                    endTest();
+                }
+            }
+
+            function handleTyping() {
+                // Start test if not already running
+                if (!isTestRunning) {
+                    startTest();
+                }
+                
+                typedText = textInput.value;
+                const currentPos = typedText.length;
+                
+                // Reset all highlights
+                Array.from(textDisplay.children).forEach((span, index) => {
+                    span.className = '';
+                    
+                    if (index < currentPos) {
+                        if (typedText[index] === originalText[index]) {
+                            span.classList.add('correct');
+                        } else {
+                            span.classList.add('incorrect');
+                        }
+                    }
+                    
+                    if (index === currentPos) {
+                        span.classList.add('current');
+                    }
+                });
+                
+                // Scroll to current position
+                if (textDisplay.children[currentPos]) {
+                    textDisplay.children[currentPos].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+                
+                // Check if all text is typed
+                if (currentPos === originalText.length) {
+                    endTest();
+                }
+            }
+
+            function endTest() {
+                clearInterval(timer);
+                isTestRunning = false;
+                endTime = new Date();
+                
+                // Disable text input
+                textInput.disabled = true;
+                
+                // Calculate results
+                calculateResults();
+            }
+
+            function calculateResults() {
+                // Calculate time taken in minutes
+                const timeTaken = Math.max(1, (endTime - startTime)) / 60000; // in minutes (minimum 1ms to avoid division by zero)
+                
+                // Count errors
+                errors = 0;
+                for (let i = 0; i < typedText.length; i++) {
+                    if (typedText[i] !== originalText[i]) {
+                        errors++;
+                    }
+                }
+                
+                // Calculate WPM (standard is 5 characters = 1 word)
+                const words = typedText.length / 5;
+                const wpm = Math.round(words / timeTaken);
+                
+                // Calculate accuracy
+                const accuracy = typedText.length > 0 
+                    ? Math.round(((typedText.length - errors) / typedText.length) * 100)
+                    : 0;
+                
+                // Display results
+                wpmDisplay.textContent = wpm;
+                accuracyDisplay.textContent = accuracy + '%';
+                errorsDisplay.textContent = errors;
+                
+                // Show appropriate message based on WPM
+                let message = '';
+                let messageClass = '';
+                
+                if (wpm >= 50) {
+                    message = `🌟 शानदार! ${wpm} WPM एक पेशेवर स्तर की टाइपिंग स्पीड है! आप एक टाइपिंग चैंपियन हैं!`;
+                    messageClass = 'excellent';
+                } 
+                else if (wpm >= 35) {
+                    message = `👍 बहुत अच्छा! ${wpm} WPM औसत से ऊपर है। विशेषज्ञ स्तर तक पहुंचने के लिए अभ्यास जारी रखें!`;
+                    messageClass = 'good';
+                }
+                else if (wpm >= 20) {
+                    message = `👌 अच्छा प्रयास! ${wpm} WPM एक सभ्य गति है। नियमित अभ्यास से आप और सुधार कर सकते हैं।`;
+                    messageClass = 'average';
+                }
+                else if (wpm >= 10) {
+                    message = `✍️ अभ्यास जारी रखें! ${wpm} WPM में सुधार की आवश्यकता है। पहले सटीकता पर ध्यान दें, फिर गति बढ़ाएं।`;
+                    messageClass = 'average';
+                }
+                else {
+                    message = `😟 बहुत धीमी गति! ${wpm} WPM बुनियादी स्तर से भी कम है। आपको गंभीरता से अभ्यास करने की आवश्यकता है!`;
+                    messageClass = 'poor';
+                }
+                
+                // Add accuracy-based feedback
+                if (accuracy >= 95) {
+                    message += " आपकी सटीकता उत्कृष्ट है!";
+                } 
+                else if (accuracy >= 85) {
+                    message += " आपकी सटीकता अच्छी है, लेकिन और बेहतर हो सकती है।";
+                }
+                else if (accuracy >= 70) {
+                    message += " आपकी सटीकता में सुधार की आवश्यकता है - सही टाइपिंग पर ध्यान दें।";
+                }
+                else {
+                    message += " आपकी सटीकता बहुत खराब है - गति कम करें और सही टाइपिंग पर ध्यान केंद्रित करें।";
+                }
+                
+                // Set the message
+                resultMessage.innerHTML = message;
+                resultMessage.className = 'result-message ' + messageClass;
+                
+                resultContainer.style.display = 'block';
+            }
+
+            function restartTest() {
+                resetTest();
+                loadNewText();
+            }
+
+            function newText() {
+                resetTest();
+                loadNewText();
+            }
+
+            function resetTest() {
+                clearInterval(timer);
+                isTestRunning = false;
+                timeLeft = testDuration;
+                updateTimerDisplay();
+                
+                textInput.disabled = false;
+                textInput.value = '';
+                textInput.focus();
+                
+                resultContainer.style.display = 'none';
+                
+                // Reset highlights
+                Array.from(textDisplay.children).forEach((span, index) => {
+                    span.className = '';
+                    if (index === 0) span.classList.add('current');
+                });
+            }
+
+            // Initialize
+            updateTimerDisplay();
+            loadNewText();
+        }
+
+        // ITI Functions
+        async function showITI() {
+            // Load ITI content dynamically
+            const response = await fetch('iti.html');
+            const html = await response.text();
+            
+            // Extract only the main content (skip head and duplicate body)
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const itiMainContent = doc.querySelector('main').innerHTML;
+            
+            // Inject into our page
+            document.getElementById('iti-content').innerHTML = itiMainContent;
+            document.getElementById('iti-container').style.display = 'block';
+            
+            // Hide main page sections
+            document.querySelector('main').style.display = 'none';
+            document.getElementById('features').style.display = 'none';
+            document.getElementById('cta').style.display = 'none';
+            document.querySelector('footer').style.display = 'none';
+            
+            // Initialize ITI functionality
+            initITI();
+        }
+
+        function hideITI() {
+            document.getElementById('iti-container').style.display = 'none';
+            
+            // Show main page sections
+            document.querySelector('main').style.display = 'block';
+            document.getElementById('features').style.display = 'block';
+            document.getElementById('cta').style.display = 'block';
+            document.querySelector('footer').style.display = 'block';
+        }
+
+        function initITI() {
+            // ITI specific functionality can be added here
+        }
+
+        // AI Chatbot Functions
+        let isChatOpen = false;
+        const BOT_NAME = "Mr. ComPotter AI";
+        let userName = null;
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            document.getElementById('ai-chatbot').style.display = isChatOpen ? 'block' : 'none';
+            document.getElementById('chat-icon').innerText = isChatOpen ? '✕' : '💬';
+            
+            if (isChatOpen && userName === null) {
+                showBotMessage("नमस्ते! आपका स्वागत है। कृपया अपना नाम बताएं ताकि मैं आपको बेहतर तरीके से मदद कर सकूँ।");
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('user-input');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            input.value = '';
+            showUserMessage(message);
+            
+            if (userName === null) {
+                const nameMatch = message.match(/मेरा नाम (.*) है|my name is (.*)/i);
+                if (nameMatch) {
+                    userName = nameMatch[1] || nameMatch[2];
+                    showBotMessage(`धन्यवाद ${userName}! अब मैं आपकी कैसे मदद कर सकता हूँ?`);
+                } else {
+                    showBotMessage("कृपया अपना नाम इस प्रकार बताएं: 'मेरा नाम [आपका नाम] है' या 'My name is [your name]'");
+                }
+            } else {
+                const botResponse = await generateAIResponse(message);
+                showBotMessage(botResponse);
+            }
+        }
+
+        function showUserMessage(msg) {
+            const chatDiv = document.getElementById('chat-messages');
+            chatDiv.innerHTML += `
+                <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+                    <div style="max-width:80%;background:#e3f2fd;color:#333;padding:10px 15px;border-radius:18px 18px 0 18px;font-size:14px;line-height:1.5;word-break:break-word;">
+                        ${userName ? userName + ': ' : ''}${msg}
+                    </div>
+                </div>
+            `;
+            scrollToBottom();
+        }
+
+        async function showBotMessage(message) {
+            const chatDiv = document.getElementById('chat-messages');
+            
+            // 1. Show typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.id = 'typing-indicator';
+            typingIndicator.innerHTML = `
+                <div style="display:flex;justify-content:flex-start;margin-bottom:12px;">
+                    <div style="max-width:80%;background:#f0f0f0;color:#333;padding:10px 15px;border-radius:18px 18px 18px 0;font-size:14px;">
+                        <span class="typing-dots">
+                            <span>.</span><span>.</span><span>.</span>
+                        </span>
+                    </div>
+                </div>
+            `;
+            chatDiv.appendChild(typingIndicator);
+            scrollToBottom();
+
+            // 2. Delay for realistic typing effect
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // 3. Remove typing indicator
+            chatDiv.removeChild(typingIndicator);
+
+            // 4. Show actual message (character by character)
+            const messageDiv = document.createElement('div');
+            messageDiv.innerHTML = `
+                <div style="display:flex;justify-content:flex-start;margin-bottom:12px;">
+                    <div style="max-width:80%;background:linear-gradient(135deg,#6a11cb,#2575fc);color:white;padding:10px 15px;border-radius:18px 18px 18px 0;font-size:14px;line-height:1.5;">
+                        <strong>${BOT_NAME}:</strong> <span id="message-text"></span>
+                    </div>
+                </div>
+            `;
+            chatDiv.appendChild(messageDiv);
+            scrollToBottom();
+
+            // 5. Typing animation
+            const textElement = messageDiv.querySelector('#message-text');
+            let i = 0;
+            const typingSpeed = 20; // milliseconds per character
+
+            function typeWriter() {
+                if (i < message.length) {
+                    textElement.innerHTML += message.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, typingSpeed);
+                    scrollToBottom();
+                }
+            }
+            typeWriter();
+        }
+
+        function scrollToBottom() {
+            const chatContainer = document.getElementById('chat-messages');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function searchWebsiteContent(query) {
+            query = query.toLowerCase().trim();
+            
+            // 1. For homepage
+            if (/home|home page|मुख पृष्ठ|शुरुआत/i.test(query)) {
+                return `${userName}, आप <button onclick="goToHomePage()" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">यहाँ क्लिक करके होमपेज पर जा सकते हैं</button>`;
+            }
+            
+            // 2. For classes and lessons
+            if (/class [1-9]|क्लास [१-९]|grade|standard|कक्षा|ग्रेड|lesson|लेसन|chapter|पाठ/i.test(query)) {
+                const classMatch = query.match(/(class|क्लास|कक्षा|grade|standard|ग्रेड)\s*([1-9]|१|२|३|४|५|६|७|८|९|10|दस)/i);
+                const lessonMatch = query.match(/(lesson|लेसन|chapter|पाठ)\s*([1-9]|१|२|३|४|५|६|७|८|९|10|दस)/i);
+                
+                if (classMatch) {
+                    let classNum = classMatch[2];
+                    const hindiToEnglish = {'१':1,'२':2,'३':3,'४':4,'५':5,'६':6,'७':7,'८':8,'९':9,'दस':10};
+                    classNum = hindiToEnglish[classNum] || classNum;
+                    
+                    if (classNum >= 5 && classNum <= 10) {
+                        const classData = syllabusData[classNum];
+                        if (classData && classData.length > 0) {
+                            let response = `${userName}, कक्षा ${classNum} के लिए उपलब्ध पाठ:<br><ul style="margin-left:20px;">`;
+                            classData.forEach((lesson, index) => {
+                                response += `<li><button onclick="showLesson(${classNum}, ${index})" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">${lesson.title}</button></li>`;
+                            });
+                            response += `</ul><br><button onclick="showClass(${classNum})" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">कक्षा ${classNum} खोलें</button>`;
+                            return response;
+                        }
+                    }
+                }
+                
+                if (lessonMatch && classMatch) {
+                    let classNum = classMatch[2];
+                    let lessonNum = lessonMatch[2];
+                    const hindiToEnglish = {'१':1,'२':2,'३':3,'४':4,'५':5,'६':6,'७':7,'८':8,'९':9,'दस':10};
+                    classNum = hindiToEnglish[classNum] || classNum;
+                    lessonNum = hindiToEnglish[lessonNum] || lessonNum;
+                    
+                    if (classNum >= 5 && classNum <= 10) {
+                        const classData = syllabusData[classNum];
+                        if (classData && classData[lessonNum-1]) {
+                            return `${userName}, आप <button onclick="showLesson(${classNum}, ${lessonNum-1})" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">कक्षा ${classNum} का पाठ ${lessonNum} यहाँ खोल सकते हैं</button>`;
+                        }
+                    }
+                }
+            }
+            
+            // 3. For quizzes/tests
+            if (/quiz|क्विज|test|टेस्ट|mcq|प्रश्न/i.test(query)) {
+                if (/class|कक्षा/i.test(query)) {
+                    const classMatch = query.match(/(class|क्लास|कक्षा)\s*([5-9]|10)/i);
+                    if (classMatch) {
+                        const classNum = parseInt(classMatch[2]);
+                        return `${userName}, आप <button onclick="showClass(${classNum}); setTimeout(() => document.querySelector('.tab-btn[data-tab=\\'quiz\\']')?.click(), 800);" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">कक्षा ${classNum} का क्विज़ यहाँ खोल सकते हैं</button>`;
+                    }
+                }
+                return `${userName}, आप <button onclick="document.querySelector('.class-card')?.click(); setTimeout(() => document.querySelector('.tab-btn[data-tab=\\'quiz\\']')?.click(), 1000);" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">यहाँ क्विज़ सेक्शन खोल सकते हैं</button>`;
+            }
+            
+            // 4. For programming/tech sections
+            const sections = {
+                'html': {name: 'HTML', func: 'openProgrammingSection(\'html-section\')'},
+                'css': {name: 'CSS', func: 'openProgrammingSection(\'css-section\')'},
+                'javascript': {name: 'JavaScript', func: 'openProgrammingSection(\'js-section\')'},
+                'typing': {name: 'टाइपिंग मास्टर', func: 'showTypingMaster()'},
+                'editor': {name: 'कोड एडिटर', func: 'window.location.href=\'editor.html\''},
+                'python': {name: 'Python', func: 'showLesson(8, 0)'}
+            };
+            
+            for (const [key, section] of Object.entries(sections)) {
+                if (query.includes(key)) {
+                    return `${userName}, आप <button onclick="${section.func}" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">${section.name} सेक्शन यहाँ खोल सकते हैं</button>`;
+                }
+            }
+            
+            // 5. For other sections
+            if (/notes|नोट्स|pdf|पीडीएफ/i.test(query)) {
+                return `${userName}, आप <button onclick="document.querySelector('.class-card')?.click(); setTimeout(() => document.querySelector('.tab-btn[data-tab=\\'pdf\\']')?.click(), 1000);" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">PDF नोट्स यहाँ एक्सेस कर सकते हैं</button>`;
+            }
+            
+            if (/contact|संपर्क|help|मदद/i.test(query)) {
+                return `${userName}, आप <button onclick="document.getElementById(\'contact\').scrollIntoView({behavior:\'smooth\'});" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">संपर्क सेक्शन यहाँ देख सकते हैं</button>`;
+            }
+            
+            if (/about|हमारे बारे में|information|जानकारी/i.test(query)) {
+                return `${userName}, आप <button onclick="document.querySelector(\'footer\').scrollIntoView({behavior:\'smooth\'});" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">हमारे बारे में जानकारी यहाँ पढ़ सकते हैं</button>`;
+            }
+
+            // 6. Default response
+            return null;
+        }
+
+        async function generateAIResponse(userMessage) {
+            // First search website content
+            const websiteResult = searchWebsiteContent(userMessage);
+            if (websiteResult) {
+                return websiteResult;
+            }
+
+            // Basic responses
+            const responses = {
+                greeting: `नमस्ते ${userName}! मैं Mr. ComPotter AI हूँ। आप कंप्यूटर शिक्षा, प्रोग्रामिंग, या टाइपिंग के बारे में कुछ भी पूछ सकते हैं। 😊`,
+                thanks: `आपका स्वागत है ${userName}! मुझे आपकी मदद करके खुशी हुई। ❤️`,
+                help: `${userName}, मैं आपकी कैसे मदद कर सकता हूँ? आप ये पूछ सकते हैं:<br>
+                - <button onclick="showClass(5)" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">कक्षा 5 के पाठ दिखाएं</button><br>
+                - <button onclick="openProgrammingSection('html-section')" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">HTML के बारे में बताएं</button><br>
+                - <button onclick="showTypingMaster()" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">टाइपिंग टेस्ट खोलें</button><br>
+                - <button onclick="window.location.href='editor.html'" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">कोड एडिटर खोलें</button><br>
+                - <button onclick="document.querySelector('.class-card')?.click(); setTimeout(() => document.querySelector('.tab-btn[data-tab=\\'pdf\\']')?.click(), 1000);" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">कंप्यूटर नोट्स डाउनलोड करना चाहता हूँ</button><br>
+                - <button onclick="goToHomePage()" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">होमपेज पर जाएं</button>`
+            };
+
+            if (/hi|hello|नमस्ते|हैलो/i.test(userMessage)) return responses.greeting;
+            if (/thanks|thank you|धन्यवाद/i.test(userMessage)) return responses.thanks;
+            if (/help|मदद|सहायता/i.test(userMessage)) return responses.help;
+
+            return `${userName}, मैं आपके प्रश्न को पूरी तरह नहीं समझ पाया। कृपया <button onclick="document.getElementById('user-input').value='help';sendMessage();" style="background:none;border:none;color:white;text-decoration:underline;cursor:pointer;padding:0;font-size:14px;">"मदद"</button> टाइप करके विकल्प देखें।`;
+        }
+
+        // Handle Enter key in input
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // Helper function to go to homepage
+        function goToHomePage() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            toggleChat();
+        }
+
+        // Helper function to show class
+        function showClass(classNum) {
+            const classCard = document.querySelector(`.class-card[data-class="${classNum}"]`);
+            if (classCard) {
+                classCard.click();
+                setTimeout(() => {
+                    document.getElementById('classes').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+                toggleChat();
+                return true;
+            }
+            return false;
+        }
+
+        // Helper function to show lesson
+        function showLesson(classNum, lessonIndex) {
+            if (showClass(classNum)) {
+                setTimeout(() => {
+                    const lessonItems = document.querySelectorAll('#lessonList .lesson-item');
+                    if (lessonItems && lessonItems[lessonIndex]) {
+                        lessonItems[lessonIndex].click();
+                        if (window.location.hash.includes('quiz')) {
+                            setTimeout(() => {
+                                document.querySelector('.tab-btn[data-tab="quiz"]')?.click();
+                            }, 300);
+                        }
+                    }
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
