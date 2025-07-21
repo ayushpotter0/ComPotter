@@ -870,9 +870,40 @@
             
             .programming-card {
                 width: 100%;
-            }
+            } 
+            /* ✅ Desktop ke liye default style */
+.box {
+  width: 80%;
+  margin: auto;
+  font-size: 24px;
+  background-color: lightblue;
+  padding: 20px;
+  text-align: center;
+}
+
+/* ✅ Tablet ke liye (screen width 768px se kam) */
+@media screen and (max-width: 768px) {
+  .box {
+    width: 90%;
+    font-size: 20px;
+    background-color: lightgreen;
+  }
+}
+
+/* ✅ Mobile ke liye (screen width 480px se kam) */
+@media screen and (max-width: 480px) {
+  .box {
+    width: 100%;
+    font-size: 16px;
+    background-color: lightcoral;
+  }
+}
+
         }
-    </style>
+    </style> 
+    <!-- 👇 यह लाइन हमेशा HTML की head में होनी चाहिए -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
     <header>
